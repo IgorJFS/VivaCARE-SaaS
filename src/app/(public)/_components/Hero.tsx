@@ -5,7 +5,7 @@ import doctorImg from '../../../../public/doctor-hero.png';
 export function Hero() {
   return (
     <section className='bg-white'>
-      <div className='container mx-auto px-4 pt-23 sm:px-6 lg:px-8'>
+      <div className='container mx-auto pb-4 px-4 pt-23 sm:px-6 lg:px-8'>
         <main className='flex items-center justify-center'>
           <article className='flex-[2] space-y-8 max-w-2xl flex flex-col justify-center'>
             <h1 className='text-4xl lg:text-6xl font-bold max-w-2xl tracking-tight'>
@@ -15,7 +15,7 @@ export function Hero() {
               We are a platform for medical professionals, focused on making
               your appointments faster, simpler, and more organized.
             </p>
-            <Button className='bg-emerald-500 hover:bg-emerald-400 w-fit px-6 font-semibold'>
+            <Button className='bg-emerald-500 cursor-pointer hover:bg-emerald-400 w-fit px-6 font-semibold'>
               Make an appointment
             </Button>
           </article>

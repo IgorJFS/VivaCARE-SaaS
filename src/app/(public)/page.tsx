@@ -1,5 +1,7 @@
+import { Footer } from './_components/Footer';
 import { Header } from './_components/Header';
 import { Hero } from './_components/Hero';
+import { Professionals } from './_components/Professionals';
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
 
       <div>
         <Hero />
+        <Professionals />
+        <Footer />
       </div>
     </div>
   );

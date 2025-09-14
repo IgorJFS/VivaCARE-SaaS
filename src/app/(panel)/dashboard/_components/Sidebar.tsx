@@ -5,29 +5,10 @@ import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import logo from '../../../../../public/logo-odonto.png';
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
-import {
-  Banknote,
-  CalendarCheck2,
-  ChevronLeft,
-  ChevronRight,
-  Folder,
-  List,
-  SettingsIcon,
-} from 'lucide-react';
+import { Banknote, CalendarCheck2, ChevronLeft, ChevronRight, Folder, List, SettingsIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -37,35 +18,22 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex min-h-screen w-full'>
       <aside
-        className={clsx(
-          'flex flex-col border-r bg-background transition-all duration-300 p-4 h-full',
-          {
-            'w-20': isCollapsed,
-            'w-64': !isCollapsed,
-            'hidden md:flex md:fixed': true,
-          },
-        )}
+        className={clsx('flex flex-col border-r bg-background transition-all duration-300 p-4 h-full', {
+          'w-20': isCollapsed,
+          'w-64': !isCollapsed,
+          'hidden md:flex md:fixed': true,
+        })}
       >
         <div className='mb-6'>
           {!isCollapsed && (
-            <Image
-              src={logo}
-              alt='Logo'
-              priority
-              quality={100}
-              style={{ width: 'auto', height: 'auto' }}
-            />
+            <Image src={logo} alt='Logo' priority quality={100} style={{ width: 'auto', height: 'auto' }} />
           )}
         </div>
         <Button
           className='bg-gray-100 hover:bg-gray-50 text-zinc-900 self-end mb-2'
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
-          {!isCollapsed ? (
-            <ChevronLeft className='w-12 h-12' />
-          ) : (
-            <ChevronRight className='w-12 h-12' />
-          )}
+          {!isCollapsed ? <ChevronLeft className='w-12 h-12' /> : <ChevronRight className='w-12 h-12' />}
         </Button>
         {isCollapsed && (
           <nav className='flex flex-col gap-1 overflow-hidden mt-2'>
@@ -102,9 +70,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         <Collapsible open={!isCollapsed}>
           <CollapsibleContent>
             <nav className='flex flex-col gap-1 overflow-hidden'>
-              <span className='text-sm text-gray-400 font-medium mt-1 uppercase'>
-                Dashboard
-              </span>
+              <span className='text-sm text-gray-400 font-medium mt-1 uppercase'>Dashboard</span>
               <NavItem
                 href='/dashboard'
                 icon={<CalendarCheck2 />}
@@ -119,9 +85,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                 pathname={pathname}
                 isCollapsed={isCollapsed}
               />
-              <span className='text-sm text-gray-400 font-medium mt-1 uppercase'>
-                My Account
-              </span>
+              <span className='text-sm text-gray-400 font-medium mt-1 uppercase'>My Account</span>
               <NavItem
                 href='/dashboard/profile'
                 icon={<SettingsIcon />}
@@ -150,13 +114,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <Sheet>
             <div className='flex items-center gap-4'>
               <SheetTrigger asChild>
-                <Button variant='outline' size='icon' className='md:hidden'>
+                <Button onClick={() => setIsCollapsed(false)} variant='outline' size='icon' className='md:hidden'>
                   <List className='h-4 w-4' />
                 </Button>
               </SheetTrigger>
-              <h1 className='text-base md:text-lg font-semibold'>
-                VivaCARE Menu
-              </h1>
+              <h1 className='text-base md:text-lg font-semibold'>VivaCARE Menu</h1>
             </div>
             <SheetContent side='left' className='sm:max-w-xs text-black p-4'>
               <SheetTitle>VivaCARE</SheetTitle>
@@ -212,13 +174,10 @@ function NavItem({ href, icon, label, pathname, isCollapsed }: NavItemProps) {
   return (
     <Link href={href}>
       <div
-        className={clsx(
-          'flex items-center gap-2 p-3  rounded-md  transition-colors',
-          {
-            'bg-blue-500 text-white': pathname === href,
-            'text-gray-700 hover:bg-gray-200': pathname !== href,
-          },
-        )}
+        className={clsx('flex items-center gap-2 p-3  rounded-md  transition-colors', {
+          'bg-blue-500 text-white': pathname === href,
+          'text-gray-700 hover:bg-gray-200': pathname !== href,
+        })}
       >
         <span className='w-6 h-6'>{icon}</span>
         {!isCollapsed && <span>{label}</span>}
